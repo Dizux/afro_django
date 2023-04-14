@@ -26,15 +26,28 @@
                 </ul>
             </nav>
         </header>
-        <div class="regdiv">
-            <form action="" id="reg_form">
-                <input placeholder="Username" name="username" type="text"> 
-                <input placeholder="Email" name="email" type="email"> 
-                <input placeholder="Password" name="password" type="password">
-                <input placeholder="Confirm Password" required="password">  
-                <input type="submit"> 
-            </form>
-        </div>
+        <!-- form action is the url where the form posts its data
+        the method is the request method of the form its either a GET or a POST -->
+        <form action="{% url 'registration' %}" id="reg_form" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="regdiv">
+                <!-- all data within a form in the input fields can be accessed in the views using the name field -->
+                <select name="gender" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                <br>
+                <input placeholder="Username" name="username" type="text" required> 
+                <br>
+                <input placeholder="Email" name="user_email" type="email" required> 
+                <br>
+                <input placeholder="Password" name="password" type="password" required>
+                <br>
+                <input placeholder="Confirm Password" type="password" required="password">  
+                <br>
+                <input type="submit" class="button1" id="signupbtn" title="Signup"> 
+           </div>
+         </form>
         <footer></footer>
     </body>
 </html>
